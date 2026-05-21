@@ -2,7 +2,6 @@ import streamlit as st
 
 class storage:
     def __init__(self):
-        # تعديل لضمان عدم مسح البيانات المحفوظة عند إعادة تحميل الصفحة
         if "saved_files" not in st.session_state:
             st.session_state.saved_files = []
             
@@ -107,11 +106,10 @@ def main():
         with col1:
             start_button = st.button("START ANALYSIS")
         with col2:
-            save_button = st.button("SAVE ANALYSIS") # هنا بعدين من اضيف السكشن مال سيف
+            save_button = st.button("SAVE ANALYSIS") # هنا بعدين من نضيف السكشن مال سيف
             
         if start_button:
             if user_input.strip() != "":
-                # تم إصلاح الاستدعاء هنا واستخدام اسم متغير مختلف لتجنب التضارب
                 text_analyzer = analyzer(user_input)
                 result = text_analyzer.get_full_report()
                 
@@ -122,7 +120,7 @@ def main():
                 st.session_state.temp_text = user_input
                 st.session_state.temp_result = result
             else:
-                st.warning("ENTER TEXT FIRST")
+                st.warning("ENTER TEXT FIRST")#بعد السكشنات مال السيف ومال فايل
 
 if __name__ == "__main__":
     main()
